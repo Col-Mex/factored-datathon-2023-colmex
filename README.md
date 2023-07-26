@@ -8,3 +8,8 @@ Justifying Recommendations using Distantly-Labeled Reviews and Fine-Grained Aspe
 This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io/amazon/index.html) dataset.
 
 [Research.md](Research.md) - Here we investigated other articles that cited the article above. 
+
+
+**Data Preprocessing notes**
+
+[Data_prep_notes.md](Data_prep_notes) - Previous work is examined to avoid pitfalls related to data preparation.
