@@ -2,7 +2,7 @@
 
 We created some tools to get more info about the base article.
 
-[gs_article_get_citations.ipynb](notebooks/gs_article_get_citations.ipynb) - Get the information of the articles tha cited the base article.  
+[gs_article_get_citations.ipynb](notebooks/gs_article_get_citations.ipynb) - Get information of the articles that cited the base article.  
 [gs_article_analysis.ipynb](notebooks/gs_article_analysis.ipynb) - Filter articles of interest related to a topic.  
 [Highlighted papers](https://drive.google.com/drive/folders/1AKBD8D-feS5g9G2T34QDYEUW-JtiOa45) - Google drive folder to storage papers.
 

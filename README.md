@@ -12,4 +12,4 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 
 **Data Preprocessing notes**
 
-[Data_prep_notes.md](Data_prep_notes) - Previous work is examined to avoid pitfalls related to data preparation.
+[Data_prep_notes.md](Data_prep_notes.md) - Previous work is examined to avoid pitfalls related to data preparation.
