@@ -8,8 +8,6 @@ We created some tools to get more info about the base article.
 
 [Highlighted papers](https://drive.google.com/drive/folders/1AKBD8D-feS5g9G2T34QDYEUW-JtiOa45) - Google drive folder to storage papers.
 
-All articles listed cited the base article.
-
 **Relevant papers**
 
 Hybrid recommendation by incorporating the **sentiment of product reviews**  
@@ -23,14 +21,16 @@ Generating **Explainable Product Comparisons** for Online Shopping
 
 **Restricted papers**
 
-Interpretable machine learning-based approach for customer segmentation for **new product development** from **online product reviews**  
-[[site](https://www.sciencedirect.com/science/article/abs/pii/S0268401223000221)]
-
 Towards **Explainable Recommendation** Via Bert-Guided Explanation Generator  
 [[site](https://ieeexplore.ieee.org/document/10096389)]
 
+Interpretable machine learning-based approach for customer segmentation for **new product development** from **online product reviews**  
+[[site](https://www.sciencedirect.com/science/article/abs/pii/S0268401223000221)] *
+
 **Market segmentation** based on customer experience dimensions extracted from **online reviews** using data mining  
-[[site](https://www.emerald.com/insight/content/doi/10.1108/JCM-10-2022-5654/full/html)]
+[[site](https://www.emerald.com/insight/content/doi/10.1108/JCM-10-2022-5654/full/html)] *
+
+(*) Not cited base article.
 
 **Topics**:
 * New product development
