@@ -1,3 +1,5 @@
+src/etl/extract/amazon_metadata/
+src/etl/extract/amazon_reviews/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
