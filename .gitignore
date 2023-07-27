@@ -1,6 +1,7 @@
 src/etl/extract/amazon_metadata/
 src/etl/extract/amazon_reviews/
 src/etl/extract/*.joblib
+src/etl/transform/*.parquet
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
