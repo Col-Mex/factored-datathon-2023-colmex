@@ -38,10 +38,8 @@ def download_compressed_data(folder_to_download, path_to_save, name_joblib_downl
                     downloaded_data.append(path_name)
                     joblib.dump(downloaded_data, joblib_dreviews)
             counter += 1
-            if counter % 2 == 0:
+            if counter % 500 == 0:
                 print(f"Downloaded {counter} files until now. Took {time.time() - start_time} seconds")
-            if counter == 5:
-                break
     hours, rem = divmod(time.time() - start_time, 3600)
     minutes, seconds = divmod(rem, 60)
     print(f"{counter} files downloaded in {int(hours)}:{int(minutes)}:{seconds} (h:m:s)")
