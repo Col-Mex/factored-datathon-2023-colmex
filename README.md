@@ -19,6 +19,8 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 * [amazon_reviews_raw_schema.json](data_files/amazon_reviews_raw_schema.json)
 * [amazon_metadata_raw_schema.json](data_files/amazon_metadata_raw_schema.json)
 
+[3_query_batch_data](notebooks/3_query_batch_data.ipynb) - Query data for EDA.
+
 **Data Preprocessing notes**
 
 [data_prep_notes.md](data_prep_notes.md) - Previous work is examined to avoid pitfalls related to data preparation.
