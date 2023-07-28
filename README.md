@@ -13,3 +13,7 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 **Data Preprocessing notes**
 
 [Data_prep_notes.md](Data_prep_notes.md) - Previous work is examined to avoid pitfalls related to data preparation.
+
+**Documents/Files storage**
+
+A shared Google Drive [folder](https://drive.google.com/drive/folders/1RFptM5LDdVLjcFN5d3IdXtjWexsLs_oD) was created to storage documents and big files to work collaboratively.
