@@ -1,48 +1,27 @@
 import pandas as pd
 import json
+from gen_samples import *
 
-main_path = ""
-sample_path = main_path + "sample/"
+import os
 
-reviews_path = sample_path + "reviews0.json"
-metadata_path = sample_path + "metadata0.json"
+percentage_of_run = 0.05
 
-reviews_df_path = sample_path + "reviews.csv"
-metadata_df_path = sample_path + "metadata.csv"
+elements_running = ["metadata", "data"]
 
-with open(reviews_path, 'r') as f:
-    data = f.readlines()
-
-list_of_data = [json.loads(x) for x in data]
-
-colnames = ['asin', 'overall', 'reviewText', 'reviewerID', 'summary', 'unixReviewTime', 'verified']
-reviews = pd.DataFrame(data=[list(list_of_data[0].values())], columns=colnames)
-reviews.to_csv(reviews_df_path, index=False, sep="|")
-
-for element in list_of_data[1:]:
-    review_temp = pd.DataFrame(data=[list(element.values())], columns=list(element.keys()))
-    review_temp = review_temp.replace(r'\n',' ', regex=True)
-    if set(list(review_temp.columns)) == set(colnames):
-        review_temp = review_temp[colnames]
-        review_temp.to_csv(reviews_df_path, mode="a", header=False, index=False, sep="|")
+list_metadata = os.listdir("sample/review_metadata/")
+list_data = os.listdir("sample/review_data/")
 
 
-with open(metadata_path, 'r') as f:
-    metadata = f.readlines()
-
-list_of_metadata = [json.loads(x) for x in metadata]
-
-colnames_metadata = ['also_buy', 'also_view', 'asin', 'brand', 'category', 'date', 'description', 'details', 'feature', 'fit', 'image', 'main_cat', 'price', 'rank', 'similar_item', 'tech1', 'tech2', 'title']
-metadata = pd.DataFrame(data=[list(list_of_metadata[0].values())], columns=colnames_metadata)
-metadata.to_csv(metadata_df_path, index=False, sep="|")
-
-for element in list_of_metadata[1:]:
-    metadata_temp = pd.DataFrame(data=[list(element.values())], columns=list(element.keys()))
-    metadata_temp = metadata_temp.replace(r'\n',' ', regex=True)
-    if set(list(metadata_temp.columns)) == set(colnames_metadata):
-        metadata_temp = metadata_temp[colnames_metadata]
-        metadata_temp.to_csv(metadata_df_path, mode="a", header=False, index=False, sep="|")
-
-
+for idx, element in enumerate([list_metadata, list_data]):
+    len_element = len(element)
+    batch_size = int(len_element*percentage_of_run)
+    chunks = list(chunk_creator(element, batch_size))
+    
+    counter = 0
+    for chunk in chunks:
+        print("running chunk number {} for {}".format(counter, elements_running[idx]))
+        proccessed = extract_sample_from_jsons(chunk, "sample/review_{}/".format(elements_running[idx]), 0.05, f"sample/review_{elements_running[idx]}_sample/partitions/{elements_running[idx]}_sample_5p_{counter}.parquet", if_random=False)
+        counter += 1
+        print("done.")
 
 
