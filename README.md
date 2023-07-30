@@ -7,12 +7,23 @@ Justifying Recommendations using Distantly-Labeled Reviews and Fine-Grained Aspe
 
 This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io/amazon/index.html) dataset.
 
-[Research.md](Research.md) - Here we investigated other articles that cited the article above. 
+[research.md](research.md) - Here we investigated other articles that cited the article above. 
 
+**Data source acquisition**
+
+[1_download_batch_data.ipynb](notebooks/1_download_batch_data.ipynb) - Download **.gz** files of Amazon products reviews and metadata.
+* Amazon Product Reviews - 22.4 GB
+* Amazon Metadata - 11.8 GB
+
+[2_load_batch_data](notebooks/2_load_batch_data.ipynb) - Load data using Spark to get initial schemas.
+* [amazon_reviews_raw_schema.json](data_files/amazon_reviews_raw_schema.json)
+* [amazon_metadata_raw_schema.json](data_files/amazon_metadata_raw_schema.json)
+
+[3_query_batch_data](notebooks/3_query_batch_data.ipynb) - Query data for EDA.
 
 **Data Preprocessing notes**
 
-[Data_prep_notes.md](Data_prep_notes.md) - Previous work is examined to avoid pitfalls related to data preparation.
+[data_prep_notes.md](data_prep_notes.md) - Previous work is examined to avoid pitfalls related to data preparation.
 
 **Documents/Files storage**
 
