@@ -66,5 +66,5 @@ class data_downloader():
         all_data.to_parquet(output_path)
 
 
-download_compressed_data("amazon_metadata", "src/etl/extract", "downloaded_metadata.joblib")
-download_compressed_data("amazon_reviews", "src/etl/extract", "downloaded_reviews.joblib")
+# download_compressed_data("amazon_metadata", "src/etl/extract", "downloaded_metadata.joblib")
+# download_compressed_data("amazon_reviews", "src/etl/extract", "downloaded_reviews.joblib")
