@@ -73,3 +73,25 @@ API -- Requested or\n new available data --> APP
 **Documents/Files storage**
 
 A shared Google Drive [folder](https://drive.google.com/drive/folders/1RFptM5LDdVLjcFN5d3IdXtjWexsLs_oD) was created to storage documents and big files to work collaboratively.
+
+**Data Preprocessing notes**
+├── notebooks                   <- utils notebooks
+├── data_prep_notes             <- notes
+├── README.md                   <- The top-level README for developers using this project.
+├── reseatch.md                 <- Literature review
+├── src/etl
+│   ├── extract                 <- Exatract functions
+│   ├── transform               <- Transform functions
+│   └── load                    <- Load functions
+│
+└── sample                      <- Sample folder
+    ├── review_data             <- Review data partitions
+    ├── review_data_sample      <- Review data samples
+    |   ├── partitions          <- partitions of data
+    |   └── filtered            <- filtered data
+    ├── review_metadata         <- Review metadata partitions
+    └── review_data_metasample  <- Review metadata samples
+        ├── partitions          <- partitions of metadata
+        └── filtered            <- filtered metadata
+
+ 
