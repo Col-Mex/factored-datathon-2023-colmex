@@ -9,7 +9,7 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 
 [research.md](research.md) - Here we investigated other articles that cited the article above. 
 
-**Data source acquisition**
+**Batch Data source acquisition**
 
 [1_download_batch_data.ipynb](notebooks/1_download_batch_data.ipynb) - Download **.gz** files of Amazon products reviews and metadata.
 * Amazon Product Reviews - 22.4 GB
@@ -21,7 +21,7 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 
 [3_explore_batch_data](notebooks/3_explore_batch_data.ipynb) - Query data for EDA.
 
-**Data source exploration**
+**Batch Data source exploration**
 
 Number of reviews: 139,832,500 raw, 138,482,432 unique
 
@@ -35,6 +35,12 @@ Number of review by category using unique samples.
 Number of reviews with product metadata: 137,759,876
 
 Number of reviews without product metadata: 722,556
+
+**Stream Data acquisition**
+
+[recv_stream_data.py](scripts/recv_stream_data.py) - Basic script to receive stream data.
+
+[4_read_stream_data.ipynb](notebooks/4_read_stream_data.ipynb) - Stream data notes
 
 **Data Preprocessing notes**
 
