@@ -1,4 +1,4 @@
-from transform import *
+from src.etl.transform.transform import *
 
 
 
@@ -17,14 +17,16 @@ files = ["asins", "categories", "main_cat"]
 extractor = data_extraction()
 filtered = data_filtering()
 
-def execute_transform():
-    extractor(percentage_of_run, elements_running, list_metadata, list_data)
+def execute_transform(data_or_metadata="metadata"):
     filtered.get_asins(list_of_metadata_partitions)
-    filtered.filter_asins(term = "Software")
-    filtered.filter_data(list_of_data_partitions)
-    filtered.join_filter(list_of_data_filtered)
+    industry_asins = filtered.filter_asins(term = "Software")
+    filtered.save_list(industry_asins, 'metadata', 'asins_industry')
+    filtered.filter_data(list_of_metadata_partitions, types=data_or_metadata)
+    filtered.join_filter(list_of_metadata_partitions, types=data_or_metadata)
 
 
 if __name__ == "__main__":
-   execute_transform()
+    extractor.extract_data(percentage_of_run, elements_running, list_metadata, list_data)
+    for element in elements_running:
+        execute_transform(data_or_metadata=element)
 

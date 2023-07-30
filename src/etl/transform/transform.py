@@ -1,5 +1,5 @@
 
-from gen_samples import *
+from src.etl.transform.gen_samples import *
 
 import os
 import pyarrow.parquet as pq
@@ -28,7 +28,7 @@ class data_extraction():
     def __init__(self) -> None:
         pass
     
-    def extract_data(self,percentage_of_run, elements_running, list_metadata, list_data):
+    def extract_data(self, percentage_of_run, elements_running, list_metadata, list_data):
         for idx, element in enumerate([list_metadata, list_data]):
             len_element = len(element)
             batch_size = int(len_element*percentage_of_run)
@@ -96,23 +96,36 @@ class data_filtering():
         
         self.filtered_asins = filtered_asins
         self.filtered_categories = filtered_categories
+        
+        return filtered_asins
 
 
-    def filter_data(self, list_of_partitions):
+    def filter_data(self, list_of_partitions, types):
         """_summary_
 
         Args:
             list_of_partitions (list): List of paritions in data
         """
-        for partition in list_of_partitions:
-            # Load parquet
-            data_sample = pq.read_table(os.path.join('sample/review_data_sample/partitions/', partition))
-            # Convert to Pandas
-            data_sample = data_sample.to_pandas()
-            # Filter by list of asins
-            data_sample = data_sample[data_sample["asin"].isin(filtered_asins)]
-            # Save Parquet
-            data_sample.to_parquet(os.path.join('sample/review_data_sample/filtered', partition))
+        if types == "data":
+            for partition in list_of_partitions:
+                # Load parquet
+                data_sample = pq.read_table(os.path.join('sample/review_data_sample/partitions/', partition))
+                # Convert to Pandas
+                data_sample = data_sample.to_pandas()
+                # Filter by list of asins
+                data_sample = data_sample[data_sample["asin"].isin(self.filtered_asins)]
+                # Save Parquet
+                data_sample.to_parquet(os.path.join('sample/review_data_sample/filtered', partition))
+        elif types=="metadata":
+            for partition in list_of_partitions:
+                # Load parquet
+                data_sample = pq.read_table(os.path.join('sample/review_metadata_sample/partitions/', partition))
+                # Convert to Pandas
+                data_sample = data_sample.to_pandas()
+                # Filter by list of asins
+                data_sample = data_sample[data_sample["asin"].isin(self.filtered_asins)]
+                # Save Parquet
+                data_sample.to_parquet(os.path.join('sample/review_metadata_sample/filtered', partition))
 
     def save_list(self, element_to_save, metadata_or_data, element_name):
         file = open(F'sample/review_{metadata_or_data}_sample/{element_name}.txt','w')
@@ -123,19 +136,31 @@ class data_filtering():
         file.close()
 
 
-    def join_filter(self, list_of_filtered):
+    def join_filter(self, list_of_filtered, types):
         tables = []
-        for filtered in list_of_filtered:
-            data_sample = pq.read_table(os.path.join('sample/review_data_sample/filtered/', filtered))
-            data_sample = data_sample.to_pandas()
-            tables.append(data_sample)
-
-        filtered_data = pd.DataFrame(columns = list(tables[0].columns))
-        for table in tables:
-            filtered_data = pd.concat([filtered_data, table], axis=0)
         
-        filtered_data.to_parquet("sample/review_data_sample/data_industry.parquet")
+        if types == "data":
+            for filtered in list_of_filtered:
+                data_sample = pq.read_table(os.path.join('sample/review_data_sample/filtered/', filtered))
+                data_sample = data_sample.to_pandas()
+                tables.append(data_sample)
 
+            filtered_data = pd.DataFrame(columns = list(tables[0].columns))
+            for table in tables:
+                filtered_data = pd.concat([filtered_data, table], axis=0)
+            
+            filtered_data.to_parquet("sample/review_data_sample/data_industry.parquet")
+        elif types == "metadata":
+            for filtered in list_of_filtered:
+                data_sample = pq.read_table(os.path.join('sample/review_metadata_sample/filtered/', filtered))
+                data_sample = data_sample.to_pandas()
+                tables.append(data_sample)
+
+            filtered_data = pd.DataFrame(columns = list(tables[0].columns))
+            for table in tables:
+                filtered_data = pd.concat([filtered_data, table], axis=0)
+            
+            filtered_data.to_parquet("sample/review_metadata_sample/metadata_industry.parquet")
 
 
 # asins, categories, main_cat = get_asins(list_of_metadata_partitions)
