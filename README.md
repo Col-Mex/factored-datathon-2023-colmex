@@ -38,9 +38,33 @@ Number of reviews without product metadata: 722,556
 
 **Stream Data acquisition**
 
-[recv_stream_data.py](scripts/recv_stream_data.py) - Basic script to receive stream data.
+[recv_stream_data_async.py](scripts/recv_stream_data_async.py) - Basic script to receive stream data.
 
 [4_read_stream_data.ipynb](notebooks/4_read_stream_data.ipynb) - Stream data notes
+
+**System Architecture proposal**
+
+```mermaid
+graph LR
+BD[Batch Data] --> ED[Extract Data] 
+ED --> TD[Transform,\nClean Data] 
+TD --> DB[(Training Table\nInference Table\n)]
+
+SD[Stream Data] --> RE[Read stream] 
+RE --> TD
+
+US[Update inference\nservice scheduler] -- Trigger --> ML[ML Service] 
+ML -- Request new data/\nUpdate Sentiment, Category --> DB
+DB -- New data to process --> ML
+
+APP[User App] -- Request\naction --> API[Service API]
+ML -- Notify\nnew data --> API
+
+API -- Request\n Inference data --> DB
+DB -- Return\n requested data --> API
+
+API -- Requested or\n new available data --> APP
+```
 
 **Data Preprocessing notes**
 

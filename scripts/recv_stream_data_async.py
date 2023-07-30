@@ -7,22 +7,21 @@ EVENT_HUB_CONNECTION_STR = f"Endpoint=sb://factored-datathon.servicebus.windows.
 CONSUMER_GROUP = "colmex"
 
 async def on_event(partition_context, event):
-    print(
-        'Received the event: "{}" from the partition with ID: "{}"'.format(
-            event.body_as_str(encoding="UTF-8"), partition_context.partition_id
-        )
-    )
+    print('Received the event: "{}" from the partition with ID: "{}"'.format(
+            event.body_as_str(encoding="UTF-8"), partition_context.partition_id))
+    
     await partition_context.update_checkpoint(event)
 
-async def main():
+async def receive():
     client = EventHubConsumerClient.from_connection_string(
-        EVENT_HUB_CONNECTION_STR,
+        conn_str=EVENT_HUB_CONNECTION_STR,
         consumer_group=CONSUMER_GROUP,
-        eventhub_name=EVENT_HUB_NAME
-    )
+        eventhub_name=EVENT_HUB_NAME)
+    
     async with client:
-        await client.receive(on_event=on_event, starting_position="-1")
+        await client.receive(
+            on_event=on_event, 
+            starting_position="-1")
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    asyncio.run(receive())
