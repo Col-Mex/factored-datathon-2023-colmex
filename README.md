@@ -27,7 +27,7 @@ Number of reviews: 139,832,500 raw, 138,482,432 unique
 
 Number of metadata: 15,023,059 raw, 14,741,571 unique
 
-53 categories
+52 categories + 1 without category
 
 [num_reviews_by_category.json](data_files/num_reviews_by_category.json) - 
 Number of review by category using unique samples.
