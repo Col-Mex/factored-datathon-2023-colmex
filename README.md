@@ -19,7 +19,22 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 * [amazon_reviews_raw_schema.json](data_files/amazon_reviews_raw_schema.json)
 * [amazon_metadata_raw_schema.json](data_files/amazon_metadata_raw_schema.json)
 
-[3_query_batch_data](notebooks/3_query_batch_data.ipynb) - Query data for EDA.
+[3_explore_batch_data](notebooks/3_explore_batch_data.ipynb) - Query data for EDA.
+
+**Data source exploration**
+
+Number of reviews: 139,832,500 raw, 138,482,432 unique
+
+Number of metadata: 15,023,059 raw, 14,741,571 unique
+
+53 categories
+
+[num_reviews_by_category.json](data_files/num_reviews_by_category.json) - 
+Number of review by category using unique samples.
+
+Number of reviews with product metadata: 137,759,876
+
+Number of reviews without product metadata: 722,556
 
 **Data Preprocessing notes**
 
