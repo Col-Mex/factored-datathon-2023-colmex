@@ -27,14 +27,25 @@ Number of reviews: 139,832,500 raw, 138,482,432 unique
 
 Number of metadata: 15,023,059 raw, 14,741,571 unique
 
-52 categories + 1 without category
+[metadata_main_cats_raw.json](data_files/metadata_main_cats_raw.json)
 
-[num_reviews_by_category.json](data_files/num_reviews_by_category.json) - 
+[metadata_main_cats.json](data_files/metadata_main_cats.json) - Cleaned main_cats
+
+52 categories + 1 without category. 'Beats by Dr. Dre' seems to be a wrong value for a category so isn't consider as one.
+
+[num_reviews_by_main_cat.json](data_files/num_reviews_by_main_cat.json) - 
 Number of review by category using unique samples.
+
+[num_metadata_by_main_cat.json](data_files/num_metadata_by_main_cat.json) - 
+Number of metadata by category using unique samples.
 
 Number of reviews with product metadata: 137,759,876
 
 Number of reviews without product metadata: 722,556
+
+**Batch Data Selection**
+
+[software_asins.json](data_files/software_asins.json) - asins of Software `main_cat` from metadata.
 
 **Stream Data acquisition**
 

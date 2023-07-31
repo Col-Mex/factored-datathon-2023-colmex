@@ -1,1063 +1,711 @@
 {
     "fields": [
         {
-            "metadata": {},
             "name": "also_buy",
-            "nullable": true,
             "type": {
-                "containsNull": true,
                 "elementType": "string",
                 "type": "array"
             }
         },
         {
-            "metadata": {},
             "name": "also_view",
-            "nullable": true,
             "type": {
-                "containsNull": true,
                 "elementType": "string",
                 "type": "array"
             }
         },
         {
-            "metadata": {},
             "name": "asin",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "brand",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "category",
-            "nullable": true,
             "type": {
-                "containsNull": true,
                 "elementType": "string",
                 "type": "array"
             }
         },
         {
-            "metadata": {},
             "name": "date",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "description",
-            "nullable": true,
             "type": {
-                "containsNull": true,
                 "elementType": "string",
                 "type": "array"
             }
         },
         {
-            "metadata": {},
             "name": "details",
-            "nullable": true,
             "type": {
                 "fields": [
                     {
-                        "metadata": {},
                         "name": "\\n    Item Weight: \\n    ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "\\n    Package Dimensions: \\n    ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "\\n    Product Dimensions: \\n    ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": " Date first listed on Amazon:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": " UNSPSC Code:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "3.5\" and 5.25\" disks:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "3.5\" disk: ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "5.25\" disk:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "ASIN:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "ASIN: ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Accessory:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Age Range:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Album:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Apparel",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audible.com Release Date:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audio CD",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audio CD Library Binding:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audio CD:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audio Cassette",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audio Cassette:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audio Description:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Audio-Video",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Automotive:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Baby Product:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Bargain Book:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Bath Book:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Batteries",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Blu-ray",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Blu-ray Audio",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Board book:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Bonded Leather:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Bookmark:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "CD-R",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "CD-ROM",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "CD-ROM:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Calendar",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Calendar:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Card Book:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Cards:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Comic:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "DCC (Digital Compact Cassette):",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "DVD",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "DVD Audio",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "DVD Audio:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "DVD-R:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "DVD-ROM:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "DVD:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Diary:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Digital Copy Expiration Date:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Discontinued by manufacturer:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Diskette:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Domestic Shipping: ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Downloading:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Dubbed:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Electronics",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Electronics:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "File Size:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Flexibound:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Foam Book:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Format:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Game:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Gift:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Grade Level:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Hardcover",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Hardcover Comic:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Hardcover-spiral:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Hardcover:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Health and Beauty",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Health and Beauty:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "ISBN-10:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "ISBN-13:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Imitation Leather:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "International Shipping: ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Item model number:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "JP Oversized:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Journal:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Kindle Edition:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Kitchen:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Label:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Language:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Lawn & Patio:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Leather Bound:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Lending:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Lexile Measure:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Library Binding:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Listening Length:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Loose Leaf:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "MP3 CD:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "MP3 Music",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Map:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Mass Market Paperback:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Microfilm:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Misc. Supplies:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Misc.:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Mook:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Note on Boxed Sets:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Note:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Number of Discs:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Office Product:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Online Code:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Online Game Code:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Online Map Code:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Original Release Date:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Page Numbers Source ISBN:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Pamphlet:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Paperback",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Paperback Bunko:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Paperback Shinsho:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Paperback:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Perfect Paperback:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Personal Computers:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Plastic Comb:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Please Note:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Pocket Book:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Poster:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Print Length:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Print Magazine:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Print on Demand (Paperback):",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Printed Access Code:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Program Type:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Publication Date:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Publisher:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Rag Book:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Release Date:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Ring-bound:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Run Time:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "SPARS Code:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "School & Library Binding:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Series:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Sheet music:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Shipping Advisory:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Shipping Weight:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Shipping: ",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Simultaneous Device Usage:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Single Issue Magazine:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Slide:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Spiral-bound:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Sports",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Sports:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Staple Bound:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Stationery:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Subtitles for the Hearing Impaired:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Subtitles:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Tankobon Hardcover:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Tankobon Softcover:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Textbook Binding:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Toy:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Transparency:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Turtleback:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "UPC:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "USB Memory Stick",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Unbound:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Unknown Binding",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Unknown Binding:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "VHS Tape",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "VHS Tape:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Version:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Video Game:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Vinyl",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Vinyl Bound",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Vinyl Bound:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Wall Chart:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Watch",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Whispersync for Voice:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Word Wise:",
-                        "nullable": true,
                         "type": "string"
                     },
                     {
-                        "metadata": {},
                         "name": "Workbook:",
-                        "nullable": true,
                         "type": "string"
                     }
                 ],
@@ -1065,71 +713,49 @@
             }
         },
         {
-            "metadata": {},
             "name": "feature",
-            "nullable": true,
             "type": {
-                "containsNull": true,
                 "elementType": "string",
                 "type": "array"
             }
         },
         {
-            "metadata": {},
             "name": "fit",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "image",
-            "nullable": true,
             "type": {
-                "containsNull": true,
                 "elementType": "string",
                 "type": "array"
             }
         },
         {
-            "metadata": {},
             "name": "main_cat",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "price",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "rank",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "similar_item",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "tech1",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "tech2",
-            "nullable": true,
             "type": "string"
         },
         {
-            "metadata": {},
             "name": "title",
-            "nullable": true,
             "type": "string"
         }
     ],
