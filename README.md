@@ -16,7 +16,7 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 * Amazon Metadata - 11.8 GB
 
 [2_load_batch_data](notebooks/2_load_batch_data.ipynb) - Load data using Spark to get initial schemas.
-* [amazon_reviews_raw_schema.json](data_files/amazon_reviews_raw_schema.json)
+* [amazon_reviews_schema.json](data_files/amazon_reviews_schema.json)
 * [amazon_metadata_raw_schema.json](data_files/amazon_metadata_raw_schema.json)
 
 [3_explore_batch_data](notebooks/3_explore_batch_data.ipynb) - Query data for EDA.
@@ -47,11 +47,17 @@ Number of reviews without product metadata: 722,556
 
 [software_asins.json](data_files/software_asins.json) - asins of Software `main_cat` from metadata.
 
-**Stream Data acquisition**
+**Streaming Data acquisition**
+
+[4_streaming_data_acquisition.ipynb](notebooks/4_streaming_data_acquisition.ipynb) - Streaming data acquisition notes
 
 [recv_stream_data_async.py](scripts/recv_stream_data_async.py) - Basic script to receive stream data.
 
-[4_read_stream_data.ipynb](notebooks/4_read_stream_data.ipynb) - Stream data notes
+**Streaming Data analysis**
+
+[5_streaming_data_analysis.ipynb](notebooks/5_streaming_data_analysis.ipynb) - Analysis of streaming data.
+
+![](images/streaming_data_eda.png)
 
 **System Architecture proposal**
 
