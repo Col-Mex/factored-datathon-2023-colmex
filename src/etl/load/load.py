@@ -39,9 +39,11 @@ VAULT_URL = 'https://kv-colmex.vault.azure.net/'
 
 
 class load_data():
-    def __init__(self, table_to_load) -> None:
-        self.table_to_load = table_to_load
+    def __init__(self) -> None:
         self.credential = DefaultAzureCredential()
+        
+    def set_table_to_load(self, table_to_load):
+        self.table_to_load = table_to_load
     
     def connect_to_database(self, table_name = "reviews_test"):
         # create a SecretClient

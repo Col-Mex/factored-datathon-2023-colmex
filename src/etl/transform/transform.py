@@ -6,6 +6,7 @@ import pyarrow.parquet as pq
 import pandas as pd
 import os
 
+from transformers import pipeline
 
 # percentage_of_run = 0.05
 
@@ -80,7 +81,7 @@ class data_filtering():
             except:
                 main_cat.append(element)
         
-        return asins, category, main_cat        
+        return asins, category, main_cat
     
     def get_asins(self, list_of_partitions):
         """_summary_
@@ -122,6 +123,11 @@ class data_filtering():
         
         return filtered_asins
 
+    def load_asins(self, path):
+        with open(path) as f:
+            asins = json.load(f)
+        
+        return asins
 
     def filter_data(self, industry_asins, list_of_reviewsdf=None):
         """_summary_
@@ -129,6 +135,9 @@ class data_filtering():
         Args:
             industry_asins (_type_): _description_
             list_of_reviewsdf (_type_, optional): _description_. Defaults to None.
+        Returns;
+            data (list): list of dataframes of reviews
+            metadata (list): list of dataframes of metadata
         """
         data = []
         metadata = []
@@ -164,19 +173,19 @@ class data_filtering():
 
         file.close()
         
-    def load_list_of_asis(self, path):
-        """load list of asins
+    # def load_list_of_asis(self, path):
+    #     """load list of asins
 
-        Args:
-            path (str): path where is located the list of asins
+    #     Args:
+    #         path (str): path where is located the list of asins
 
-        Returns:
-            asins: list of asins of the industry
-        """
-        with open(path) as f:
-            asins = f.readlines()
+    #     Returns:
+    #         asins: list of asins of the industry
+    #     """
+    #     with open(path) as f:
+    #         asins = f.readlines()
 
-        return asins
+    #     return asins
 
     def join_filter(self, list_of_dfs):
         """join a list of dfs into a single df
@@ -195,9 +204,78 @@ class data_filtering():
         for table in tables:
             data = pd.concat([data, table], axis=0)
 
-        data.to_parquet("sample/review_data_sample/data_industry.parquet")        
+        #data.to_parquet("sample/review_data_sample/data_industry.parquet")        
         
         return data
+    
+    def select_columns(self, data):
+        # Select only necessary columns
+        data = data[['asin', 'overall', 'reviewText', 'reviewerID', 'reviewerName', 'summary', 'unixReviewTime', 'verified', 'vote']]
+        # Create column of review ID 
+        data['reviewID'] = data['reviewerID'] + "-" + data['asin'] + "-" + data['unixReviewTime']
+        # Create date column based on column unixReviewTime
+        data['dateReview'] = pd.to_datetime(data['unixReviewTime'].astype('int'), unit='s')
+        
+        return data
+    
+    def apply_model_to_data(self, data):
+        
+        self.__load_model()
+        
+        sentiment = data.apply(self.__safe_sentiment_task, axis=1)
+        emotion = data.apply(self.__safe_emotion_task, axis=1)
+        
+        data[['sentiment', 'sentiment_score']] = pd.DataFrame(sentiment.to_list(), index=data.index)
+        data[['emotion', 'emotion_score']] = pd.DataFrame(emotion.to_list(), index=data.index)
+        
+        # Drop columns of scores
+        data.drop(columns=['sentiment_score', 'emotion_score'], inplace=True)
+        
+        expected_columns = ['asin', 'overall', 'reviewText', 'reviewerID', 'reviewerName',
+                'summary', 'unixReviewTime', 'verified', 'vote', 'reviewID',
+                'dateReview', 'sentiment', 'emotion']
+
+        data = data[expected_columns]
+        
+        # Drop duplicates
+        data.drop_duplicates(subset=['reviewID'], inplace=True)
+        
+        return data
+
+    def __load_model(self):
+        # Load ML models for sentiment and emotion recognition on base of text
+        model_sentiment = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+        self.sentiment_task = pipeline("sentiment-analysis", model=model_sentiment, tokenizer=model_sentiment)
+        self.model_sentiment = model_sentiment
+
+        model_emotion = "j-hartmann/emotion-english-distilroberta-base"
+        self.emotion_task = pipeline("text-classification", model=model_emotion, return_all_scores=False)
+        self.model_emotion = model_emotion
+   
+    def __safe_sentiment_task(self, row):
+        
+         # In case the review text is too long, use the summary to detect sentiment
+        try:
+            return tuple(self.sentiment_task(row['reviewText'])[0].values())
+        except RuntimeError:
+            try:
+                return tuple(self.sentiment_task(row['summary'], **{"truncation": True, "max_length": 512})[0].values())
+            except (RuntimeError, IndexError):
+                    return tuple('neutral', 0)
+
+
+    def __safe_emotion_task(self, row):
+        
+        # The same for emotion
+        try:
+            return tuple(self.emotion_task(row['reviewText'])[0].values())
+        except RuntimeError:
+            try:
+                return tuple(self.emotion_task(row['summary'], **{"truncation": True, "max_length": 512})[0].values())
+            except (RuntimeError, IndexError):
+                    return tuple('neutral', 0)
+        
+        
 
 # asins, categories, main_cat = get_asins(list_of_metadata_partitions)
 # filtered_asins, filtered_categories = filter_asins(asins, categories, main_cat, term = "Software")

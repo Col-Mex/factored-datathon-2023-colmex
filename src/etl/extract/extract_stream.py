@@ -2,7 +2,7 @@ import asyncio
 import json
 from azure.eventhub.aio import EventHubConsumerClient
 
-config_file = 'config.json'
+config_file = 'jsons/config.json'
 
 try:
     with open(config_file) as f:
