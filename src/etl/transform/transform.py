@@ -4,6 +4,7 @@ from src.etl.transform.gen_samples import *
 import os
 import pyarrow.parquet as pq
 import pandas as pd
+import json
 import os
 
 from transformers import pipeline
@@ -128,6 +129,17 @@ class data_filtering():
             asins = json.load(f)
         
         return asins
+    
+    def convert_strlist_to_dataframe(self, list_of_strings):
+        
+        try:
+            json_objects = [json.loads(str(line)) for line in list_of_strings if line]
+        except:
+            json_objects = list_of_strings
+        
+        data = pd.DataFrame(json_objects)
+
+        return data
 
     def filter_data(self, industry_asins, list_of_reviewsdf=None):
         """_summary_
@@ -209,12 +221,12 @@ class data_filtering():
         return data
     
     def select_columns(self, data):
-        # Select only necessary columns
-        data = data[['asin', 'overall', 'reviewText', 'reviewerID', 'reviewerName', 'summary', 'unixReviewTime', 'verified', 'vote']]
         # Create column of review ID 
         data['reviewID'] = data['reviewerID'] + "-" + data['asin'] + "-" + data['unixReviewTime']
         # Create date column based on column unixReviewTime
         data['dateReview'] = pd.to_datetime(data['unixReviewTime'].astype('int'), unit='s')
+        # Select only necessary columns
+        data = data[['asin', 'overall', 'reviewText', 'reviewerID', 'reviewerName', 'summary', 'unixReviewTime', 'verified', 'vote']]
         
         return data
     

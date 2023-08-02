@@ -1,4 +1,4 @@
-from extract.extract_stream import extract
+from src.etl.extract.extract_stream import extract
 from src.etl.transform.transform import data_filtering
 from src.etl.load.load import load_data
 
@@ -10,11 +10,13 @@ def execute_pipeline():
     #Extractiong data
     print("Extract data")
     streaming_data = extract()
-
+    
     # Transforming data
     print("Transform data")
+    data = data_filter.convert_strlist_to_dataframe(streaming_data)
+    
     industry_asins = data_filter.load_asins("jsons/software_asins.json")
-    data, __ = data_filter.filter_data(industry_asins, streaming_data)
+    data, __ = data_filter.filter_data(industry_asins, [data])
     data = data_filter.join_filter(data)
     data = data_filter.select_columns(data)
     data = data_filter.apply_model_to_data(data)

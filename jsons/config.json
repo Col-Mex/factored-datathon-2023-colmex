@@ -2,6 +2,6 @@
     "event_hub_name": "factored_datathon_amazon_reviews_1",
     "policy_name": "datathon_group_1",
     "consumer_group": "colmex",
-    "starting_position": "27609864",
+    "starting_position": "33149472",
     "max_wait_time": 2
 }
