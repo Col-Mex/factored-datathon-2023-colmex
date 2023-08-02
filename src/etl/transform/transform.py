@@ -243,14 +243,14 @@ class data_filtering():
         # Drop columns of scores
         data.drop(columns=['sentiment_score', 'emotion_score'], inplace=True)
         
-        expected_columns = ['asin', 'overall', 'reviewText', 'reviewerID', 'reviewerName',
-                'summary', 'unixReviewTime', 'verified', 'vote', 'reviewID',
-                'dateReview', 'sentiment', 'emotion']
+        #expected_columns = ['asin', 'overall', 'reviewText', 'reviewerID', 'reviewerName',
+        #        'summary', 'unixReviewTime', 'verified', 'vote', 'reviewID',
+        #        'dateReview', 'sentiment', 'emotion']
 
-        data = data[expected_columns]
+        #data = data[expected_columns]
         
         # Drop duplicates
-        data.drop_duplicates(subset=['reviewID'], inplace=True)
+        #data.drop_duplicates(subset=['reviewID'], inplace=True)
         
         return data
 
