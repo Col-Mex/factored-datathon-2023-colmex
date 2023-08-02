@@ -64,6 +64,7 @@ class data_downloader():
 
         # Save the DataFrame to a .parquet file
         all_data.to_parquet(output_path)
+        
 
 
 # download_compressed_data("amazon_metadata", "src/etl/extract", "downloaded_metadata.joblib")

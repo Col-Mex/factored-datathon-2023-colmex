@@ -18,15 +18,18 @@ extractor = data_extraction()
 filtered = data_filtering()
 
 def execute_transform(data_or_metadata="metadata"):
-    filtered.get_asins(list_of_metadata_partitions)
+    asins_temp, main_cat = filtered.get_asins(list_of_metadata_partitions)
     industry_asins = filtered.filter_asins(term = "Software")
     filtered.save_list(industry_asins, 'metadata', 'asins_industry')
-    filtered.filter_data(list_of_metadata_partitions, types=data_or_metadata)
-    filtered.join_filter(list_of_metadata_partitions, types=data_or_metadata)
+    filtered.filter_data(list_of_metadata_partitions, types='metadata')
+    filtered.filter_data(list_of_data_partitions, types='data')
+    filtered.join_filter(list_of_metadata_partitions, types="metadata")
+    filtered.join_filter(list_of_data_partitions, types='data')
 
 
 if __name__ == "__main__":
     extractor.extract_data(percentage_of_run, elements_running, list_metadata, list_data)
-    for element in elements_running:
-        execute_transform(data_or_metadata=element)
+    execute_transform()
+
+
 
