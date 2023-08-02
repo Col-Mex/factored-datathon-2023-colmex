@@ -76,4 +76,4 @@ def extract():
 
 if __name__ == "__main__":
     data = extract()
-    print(data)
+    # print(data)
