@@ -84,12 +84,13 @@ class data_filtering():
         
         return asins, category, main_cat
     
-    def get_asins(self, list_of_partitions):
+    def get_asins(self):
         """_summary_
 
         Args:
             list_of_partitions (list): List of paritions in metadata
         """
+        list_of_partitions = self.list_of_metadata_partitions
         asins = []
         categories = []
         main_cat = []
@@ -219,6 +220,11 @@ class data_filtering():
         #data.to_parquet("sample/review_data_sample/data_industry.parquet")        
         
         return data
+    
+    def add_review_time(self, data):
+        
+        # 1535328000 26 de agosto de 2018
+        data['unixReviewTime']
     
     def select_columns(self, data):
         # Create column of review ID 

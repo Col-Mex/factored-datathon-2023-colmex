@@ -9,26 +9,26 @@ list_data = os.listdir("sample/review_data/")
 
 
 # get ASINS and Category of metadata
-list_of_metadata_partitions = os.listdir('sample/review_metadata_sample/partitions/')
-list_of_data_partitions = os.listdir('sample/review_data_sample/partitions/')
-list_of_data_filtered = os.listdir('sample/review_data_sample/filtered/')
-files = ["asins", "categories", "main_cat"]
+# list_of_metadata_partitions = os.listdir('sample/review_metadata_sample/partitions/')
+# list_of_data_partitions = os.listdir('sample/review_data_sample/partitions/')
+# list_of_data_filtered = os.listdir('sample/review_data_sample/filtered/')
+# files = ["asins", "categories", "main_cat"]
 
-extractor = data_extraction()
 filtered = data_filtering()
 
 def execute_transform(data_or_metadata="metadata"):
-    asins_temp, main_cat = filtered.get_asins(list_of_metadata_partitions)
-    industry_asins = filtered.filter_asins(term = "Software")
-    filtered.save_list(industry_asins, 'metadata', 'asins_industry')
-    filtered.filter_data(list_of_metadata_partitions, types='metadata')
-    filtered.filter_data(list_of_data_partitions, types='data')
-    filtered.join_filter(list_of_metadata_partitions, types="metadata")
-    filtered.join_filter(list_of_data_partitions, types='data')
+    asins_temp, main_cat = filtered.get_asins()
+    industry_asins = filtered.filter_asins(term = "Musical Instruments")
+    filtered.save_list(industry_asins, "metadata", "asins_music_instruments")
+    data, metadata = filtered.filter_data(industry_asins)
+    data = filtered.join_filter(data)
+    metadata = filtered.join_filter(metadata)
+    
+    data.to_parquet("sample/data_music.parquet")
+    metadata.to_parquet("sample/metadata_music.parquet")
 
 
 if __name__ == "__main__":
-    extractor.extract_data(percentage_of_run, elements_running, list_metadata, list_data)
     execute_transform()
 
 
