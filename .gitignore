@@ -4,6 +4,8 @@ src/etl/extract/*.joblib
 src/etl/transform/*.parquet
 data_files/metadata_industry.parquet
 data_files/data_industry.parquet
+data_files/metadata_music.parquet
+data_files/data_music.parquet
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
