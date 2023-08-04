@@ -243,6 +243,9 @@ class data_filtering():
         sentiment = data.apply(self.__safe_sentiment_task, axis=1)
         emotion = data.apply(self.__safe_emotion_task, axis=1)
         
+        print(data)
+        print(sentiment)
+        
         data[['sentiment', 'sentiment_score']] = pd.DataFrame(sentiment.to_list(), index=data.index)
         data[['emotion', 'emotion_score']] = pd.DataFrame(emotion.to_list(), index=data.index)
         
@@ -272,26 +275,41 @@ class data_filtering():
    
     def __safe_sentiment_task(self, row):
         
-         # In case the review text is too long, use the summary to detect sentiment
-        try:
-            return tuple(self.sentiment_task(row['reviewText'])[0].values())
-        except RuntimeError:
+        # In case the review text is too long, use the summary to detect sentiment
+        # probably, we have comments like '', it's important to consider
+        if row['reviewText'] != None or row['summary'] != None:
             try:
-                return tuple(self.sentiment_task(row['summary'], **{"truncation": True, "max_length": 512})[0].values())
-            except (RuntimeError, IndexError):
-                    return tuple('neutral', 0)
+                result = tuple(self.sentiment_task(row['reviewText'])[0].values())
+                return result
+            except:
+                try:
+                    result = tuple(self.sentiment_task(row['summary'], **{"truncation": True, "max_length": 512})[0].values())
+                    return result
+                except:
+                        return tuple('neutral', 0)
+        else:
+            print("Here we doesn't find anything in sentiment")
+            print(row['reviewText'], row['summary'])
+            return tuple(['No data', -1])
 
 
     def __safe_emotion_task(self, row):
         
         # The same for emotion
-        try:
-            return tuple(self.emotion_task(row['reviewText'])[0].values())
-        except RuntimeError:
+        if row['reviewText'] != None or row['summary'] != None:
             try:
-                return tuple(self.emotion_task(row['summary'], **{"truncation": True, "max_length": 512})[0].values())
-            except (RuntimeError, IndexError):
-                    return tuple('neutral', 0)
+                result = tuple(self.emotion_task(row['reviewText'])[0].values())
+                return result
+            except:
+                try:
+                    result = tuple(self.emotion_task(row['summary'], **{"truncation": True, "max_length": 512})[0].values())
+                    return result
+                except:
+                        return tuple('neutral', 0)
+        else:
+            print("Here we doesn't find anything in emotion")
+            print(row['reviewText'], row['summary'])
+            return tuple(['No data', -1])
         
         
 
