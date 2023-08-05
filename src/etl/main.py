@@ -31,45 +31,48 @@ def execute_pipeline():
     print("         Extract data")
     streaming_data = extract()
     print("Done.")
-    # Transforming data
-    print("----------------------------------")
-    print("        Transform data")
-    print("convert to table")
-    data = data_filter.convert_strlist_to_dataframe(streaming_data)
-    
-    print("load lists")
-    industry_asins = data_filter.load_asins("jsons/asins_music_instruments.txt")
-    industry_brands = data_filter.load_asins("jsons/brands_music_instruments.txt")
-    selected_brands = data_filter.load_asins("jsons/brands.txt")
+    try:
+        # Transforming data
+        print("----------------------------------")
+        print("        Transform data")
+        print("convert to table")
+        data = data_filter.convert_strlist_to_dataframe(streaming_data)
+        
+        print("load lists")
+        industry_asins = data_filter.load_asins("jsons/asins_music_instruments.txt")
+        industry_brands = data_filter.load_asins("jsons/brands_music_instruments.txt")
+        selected_brands = data_filter.load_asins("jsons/brands.txt")
 
-    print("filter data by asin")
-    data, __ = data_filter.filter_data(industry_asins, [data])
-    print("filter data by brand")
-    data = data_filter.filter_brands(selected_brands, industry_brands, industry_asins, data[0])
-    
-    print("merge any data partition")
-    data = data_filter.join_filter([data])
-    print("select columns")
-    data = data_filter.select_columns(data)
-    print(f"We have {data.shape[0]} reviews")
-    print(data.shape)
-    print("Done.")
-    
-    ## Run model
-    print("----------------------------------")
-    print("        Model")
-    print("runnning model ...")
-    data = run_model(data)
-    
-    print("----------------------------------")
-    print("        Load data")
-    print("Done.")
-    print("loading...")
-    #Loading data
-    #loader.connect_to_database(table_name = "reviews_test")
-    #loader.set_table_to_load(data)
-    #loader.load_data(if_exists="append", index=False)
-    print("Done.")
+        print("filter data by asin")
+        data, __ = data_filter.filter_data(industry_asins, [data])
+        print("filter data by brand")
+        data = data_filter.filter_brands(selected_brands, industry_brands, industry_asins, data[0])
+        
+        print("merge any data partition")
+        data = data_filter.join_filter([data])
+        print("select columns")
+        data = data_filter.select_columns(data)
+        print(f"We have {data.shape[0]} reviews")
+        print(data.shape)
+        print("Done.")
+        
+        ## Run model
+        print("----------------------------------")
+        print("        Model")
+        print("runnning model ...")
+        data = run_model(data)
+        
+        print("----------------------------------")
+        print("        Load data")
+        print("Done.")
+        print("loading...")
+        #Loading data
+        #loader.connect_to_database(table_name = "reviews_test")
+        #loader.set_table_to_load(data)
+        #loader.load_data(if_exists="append", index=False)
+        print("Done.")
+    except:
+        print("No data found")
 
 if __name__ == "__main__":
     execute_pipeline()
