@@ -1,8 +1,10 @@
-from etl.extract.extract_stream import extract
-from etl.transform.transform import data_filtering, model
-from etl.load.load import load_data
+from extract.extract_stream import extract
+from transform.transform import data_filtering, model
+from load.load import load_data
 
 import multiprocessing
+
+# Run this code from main path of repo (above src folder) with the following command "python src/etl/main.py"
 
 data_filter = data_filtering(stream=True)
 loader = load_data()
@@ -48,9 +50,10 @@ def execute_pipeline():
 
     print("Load data")
     #Loading data
-    loader.connect_to_database(table_name = "reviews_test")
-    loader.set_table_to_load(data)
-    loader.load_data(if_exists="append", index=False)
+    #loader.connect_to_database(table_name = "reviews_test")
+    #loader.set_table_to_load(data)
+    #loader.load_data(if_exists="append", index=False)
+    print("Done.")
 
 if __name__ == "__main__":
     execute_pipeline()

@@ -4,5 +4,5 @@
     "consumer_group": "colmex",
     "starting_position": "4311954456",
     "max_wait_time": 2,
-    "last_date":"26-ago-2018"
+    "last_date": "26-ago-2018"
 }

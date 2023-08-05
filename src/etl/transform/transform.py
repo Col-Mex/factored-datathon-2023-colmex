@@ -1,5 +1,5 @@
 
-from gen_samples import *
+
 
 import os
 import pyarrow.parquet as pq
