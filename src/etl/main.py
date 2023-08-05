@@ -1,6 +1,6 @@
-from src.etl.extract.extract_stream import extract
-from src.etl.transform.transform import data_filtering, model
-from src.etl.load.load import load_data
+from etl.extract.extract_stream import extract
+from etl.transform.transform import data_filtering, model
+from etl.load.load import load_data
 
 import multiprocessing
 

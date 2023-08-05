@@ -1,5 +1,5 @@
 
-from src.etl.transform.gen_samples import *
+from gen_samples import *
 
 import os
 import pyarrow.parquet as pq
@@ -187,7 +187,7 @@ class data_filtering():
         
         indexes = [x[0] for x in enumerate(industry_brands) if x[1] in selected_brands]
         asins_brand = [x[1] for x in enumerate(industry_asins) if x[0] in indexes]
-        
+
         data = data[data['asin'].isin(asins_brand)]
 
         return data
