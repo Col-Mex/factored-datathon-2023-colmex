@@ -55,7 +55,9 @@ expected_columns = ["reviewID",
                     "unixReviewTime",
                     "dateReview",
                     "verified",
-                    "vote"]
+                    "vote",
+                    "sentiment",
+                    "emotion"]
 
 
 reviews_merged = reviews_merged[expected_columns]
