@@ -81,6 +81,7 @@ instance/
 
 # Data
 sample/
+notebooks/models
 
 # Sphinx documentation
 docs/_build/
