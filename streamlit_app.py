@@ -1,13 +1,15 @@
 import streamlit as st
-import pyodbc
+import pandas as pd
+from sqlalchemy import create_engine
 
 st.title('Brand Health Tracker')
 st.subheader('Musical Instruments')
 
 @st.cache_resource
 def init_connection():
-    return pyodbc.connect(
-        "DRIVER={ODBC Driver 17 for SQL Server};SERVER="
+
+    return create_engine("mssql+pyodbc:///?odbc_connect="
+        + "DRIVER={ODBC Driver 17 for SQL Server};SERVER="
         + st.secrets["server"]
         + ";DATABASE="
         + st.secrets["database"]
@@ -19,13 +21,18 @@ def init_connection():
 
 conn = init_connection()
 
-@st.cache_data(ttl=600)
-def run_query(query):
-    with conn.cursor() as cur:
-        cur.execute(query)
-        return cur.fetchall()
+@st.cache_data
+def get_top_10_brands():
+    df = pd.read_sql("""
+        SELECT TOP 10 m.brand, COUNT(r.asin) AS review_count
+        FROM metadata m
+        INNER JOIN reviews r ON m.asin = r.asin
+        WHERE m.brand <> ''
+        GROUP BY m.brand
+        ORDER BY review_count DESC;
+    """, conn)
 
-rows = run_query("SELECT TOP 10 * from reviews;")
+    return df['brand'].to_list()
 
-for row in rows:
-    st.write(f"{row[0]} has a :{row[1]}:")
+brands = get_top_10_brands()
+st.write(brands)
