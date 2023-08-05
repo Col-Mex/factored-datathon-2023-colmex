@@ -240,14 +240,17 @@ class data_filtering():
         return reviews_id
 
     def select_columns(self, data):
-        if 'unixReviewTime' in data.columns: 
-            last_batch_date = datetime.datetime.strptime('2018-09-29', "%Y-%m-%d")
-            first_streaming_date = datetime.datetime.strptime('2023-07-27', "%Y-%m-%d")
-            diff_days = first_streaming_date - last_batch_date - datetime.timedelta(days=1)
-
+        if 'unixReviewTime' in data.columns:
             id_prefix = 'B' # Batch Data
             data['dateReview'] = pd.to_datetime(
-                data['unixReviewTime'].astype(int), unit='s').dt.date + diff_days
+                data['unixReviewTime'].astype(int), unit='s').dt.date
+            
+            last_batch_date = data['dateReview'].max()
+            first_streaming_date = datetime.datetime.strptime('2023-07-27', "%Y-%m-%d").date()
+            # old batch data, slice to present for app demo
+            if last_batch_date < first_streaming_date:
+                diff_days = first_streaming_date - last_batch_date - datetime.timedelta(days=1)
+                data['dateReview'] = data['dateReview'] + diff_days
             timestamp = data.pop('unixReviewTime')
         else:
             id_prefix = 'S' # Stream Data
