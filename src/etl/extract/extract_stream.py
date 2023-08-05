@@ -38,6 +38,7 @@ async def on_event(partition_context, event):
 
         await partition_context.update_checkpoint(event)
     else:
+        samples.reverse() # most recent in the top of dataset
         global receive
         receive = False
 

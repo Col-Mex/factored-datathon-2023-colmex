@@ -6,6 +6,8 @@ import pyarrow.parquet as pq
 import pandas as pd
 import json
 import os
+import time
+import datetime
 
 from transformers import pipeline
 
@@ -111,7 +113,7 @@ class data_filtering():
         
         return asins, main_cat
 
-    def filter_asins(self, term = "Software"):
+    def filter_asins(self, term = "Musical Instruments"):
         filtered_asins = []
         filtered_categories = []
         
@@ -221,19 +223,48 @@ class data_filtering():
         
         return data
     
-    def add_review_time(self, data):
-        
-        # 1535328000 26 de agosto de 2018
-        data['unixReviewTime']
-    
+    def get_review_id(self, id_pre, num_samples, ts):
+        # specify padding for int string
+        max_unit = 1e9
+        n0s = len(str(int(max_unit)))
+
+        if not ts.empty:
+            timestamps = ts
+        else:
+            timestamp = f'{int(time.time()):0{n0s}}'
+            timestamps = pd.Series([timestamp for _ in range(num_samples)])
+
+        sub_ids = pd.Series(range(num_samples)).map(f'{{:0{n0s}}}'.format)
+        reviews_id = id_pre + timestamps + 'T' + sub_ids
+
+        return reviews_id
+
     def select_columns(self, data):
+        if 'unixReviewTime' in data.columns: 
+            last_batch_date = datetime.datetime.strptime('2018-09-29', "%Y-%m-%d")
+            first_streaming_date = datetime.datetime.strptime('2023-07-27', "%Y-%m-%d")
+            diff_days = first_streaming_date - last_batch_date - datetime.timedelta(days=1)
+
+            id_prefix = 'B' # Batch Data
+            data['dateReview'] = pd.to_datetime(
+                data['unixReviewTime'].astype(int), unit='s').dt.date + diff_days
+            timestamp = data.pop('unixReviewTime')
+        else:
+            id_prefix = 'S' # Stream Data
+            timestamp = pd.Series()
+            # Remove unnecessary columns
+            data.drop(['internal_partition', 'partition_number'], axis=1, inplace=True)
+            data['dateReview'] = datetime.date.today()
+            
+        data['overall'] = pd.to_numeric(data['overall']).astype(int)
         # Create column of review ID 
-        data['reviewID'] = data['reviewerID'] + "-" + data['asin'] + "-" + data['unixReviewTime']
-        # Create date column based on column unixReviewTime
-        data['dateReview'] = pd.to_datetime(data['unixReviewTime'].astype('int'), unit='s')
-        # Select only necessary columns
-        data = data[['asin', 'overall', 'reviewText', 'reviewerID', 'reviewerName', 'summary', 'unixReviewTime', 'verified', 'vote']]
-        
+        data['reviewID'] = self.get_review_id(id_prefix, len(data), timestamp)
+        # Replace nulls by 0s
+        data.loc[data['vote'].isnull(), 'vote'] = '0'
+        data['vote'] = data['vote'].str.replace(',', '').astype(int)
+        # Remove unnecessary columns
+        data.drop(['image', 'style'], axis=1, inplace=True)
+
         return data
     
     def apply_model_to_data(self, data):
