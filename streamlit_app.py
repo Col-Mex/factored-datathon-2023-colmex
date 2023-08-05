@@ -25,7 +25,7 @@ def run_query(query):
         cur.execute(query)
         return cur.fetchall()
 
-rows = run_query("SELECT TOP 10 * from reviews_test;")
+rows = run_query("SELECT TOP 10 * from reviews;")
 
 for row in rows:
     st.write(f"{row[0]} has a :{row[1]}:")
