@@ -94,8 +94,12 @@ A shared Google Drive [folder](https://drive.google.com/drive/folders/1RFptM5LDd
 **Data Preprocessing notes**
 
 ## Project Organization
+** Sample folder needed for batch data
 
-    ├── notebooks                   <- utils notebooks
+    ├── notebooks                   <- Utils notebooks
+    ├── data_files                  <- Data utils
+    ├── images                      <- Image utils
+    ├── jsons                       <- Configurations files
     ├── data_prep_notes             <- notes
     ├── README.md                   <- The top-level README for developers using this project.
     ├── reseatch.md                 <- Literature review
@@ -103,7 +107,6 @@ A shared Google Drive [folder](https://drive.google.com/drive/folders/1RFptM5LDd
     │   ├── extract                 <- Exatract functions
     │   ├── transform               <- Transform functions
     │   └── load                    <- Load functions
-    │
     └── sample                      <- Sample folder
         ├── review_data             <- Review data partitions
         ├── review_data_sample      <- Review data samples
