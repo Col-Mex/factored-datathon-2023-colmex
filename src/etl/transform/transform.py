@@ -100,9 +100,10 @@ class data_sampling_from_local():
 
 class data_filtering():
     def __init__(self, stream=False):
-        self.list_of_metadata_partitions = os.listdir('sample/review_metadata_sample/partitions/')
-        self.list_of_data_partitions = os.listdir('sample/review_data_sample/partitions/')
-        self.stream = stream
+        if not stream:
+            self.list_of_metadata_partitions = os.listdir('sample/review_metadata_sample/partitions/')
+            self.list_of_data_partitions = os.listdir('sample/review_data_sample/partitions/')
+        self.stream = stream        
     
     def __extract_asins(self, metadata_df):
         """_summary_
