@@ -17,9 +17,10 @@ list_data = os.listdir("sample/review_data/")
 filtered = data_filtering()
 
 def execute_transform(data_or_metadata="metadata"):
-    asins_temp, main_cat = filtered.get_asins()
-    industry_asins = filtered.filter_asins(term = "Musical Instruments")
+    asins, brands, main_cat = filtered.get_asins()
+    industry_asins, industry_brands = filtered.filter_asins(term = "Musical Instruments")
     filtered.save_list(industry_asins, "metadata", "asins_music_instruments")
+    filtered.save_list(industry_brands, "metadata", "brands_music_instruments")
     data, metadata = filtered.filter_data(industry_asins)
     data = filtered.join_filter(data)
     metadata = filtered.join_filter(metadata)

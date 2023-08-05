@@ -117,6 +117,7 @@ class data_filtering():
         asins = metadata_df["asin"].tolist()
         category = metadata_df["category"].tolist()  
         category = [list(cat) for cat in category]  
+        brands = metadata_df["brand"].tolist()
         main_cat_temp = metadata_df["main_cat"].tolist()
         main_cat = []
         sub1 = "alt="
@@ -133,7 +134,7 @@ class data_filtering():
             except:
                 main_cat.append(element)
         
-        return asins, category, main_cat
+        return asins, category, main_cat, brands
     
     def get_asins(self):
         """_summary_
@@ -145,36 +146,51 @@ class data_filtering():
         asins = []
         categories = []
         main_cat = []
+        brands = []
         for partition in list_of_partitions:
             print("running partition {}".format(partition))
             metadata_sample = pq.read_table(os.path.join('sample/review_metadata_sample/partitions/', partition))
             metadata_sample = metadata_sample.to_pandas()
-            asins_temp, category_temp, main_cat_list = self.__extract_asins(metadata_sample)
+            asins_temp, category_temp, main_cat_list, brands_temp = self.__extract_asins(metadata_sample)
         
             main_cat = main_cat + main_cat_list
             asins = asins + asins_temp
             categories = categories + category_temp
+            brands = brands + brands_temp
             print("done.")
             
         self.main_cat = main_cat
         self.asins = asins
         self.categories = categories
+        self.brands = brands
         
-        return asins, main_cat
+        return asins, brands, main_cat
 
     def filter_asins(self, term = "Musical Instruments"):
         filtered_asins = []
         filtered_categories = []
+        filtered_brands = []
         
         for idx, c in enumerate(self.main_cat):
             if c == term:
                 filtered_asins.append(self.asins[idx])
                 filtered_categories.append(self.categories[idx])
+                filtered_brands.append(self.brands[idx])
         
         self.filtered_asins = filtered_asins
         self.filtered_categories = filtered_categories
+        self.filtered_brands = filtered_brands
         
-        return filtered_asins
+        return filtered_asins, filtered_brands
+    
+    def filter_brands(self, selected_brands, industry_brands, industry_asins, data):
+        
+        indexes = [x[0] for x in enumerate(industry_brands) if x[1] in selected_brands]
+        asins_brand = [x[1] for x in enumerate(industry_asins) if x[0] in indexes]
+        
+        data = data[data['asin'].isin(asins_brand)]
+
+        return data
 
     def load_asins(self, path):
         

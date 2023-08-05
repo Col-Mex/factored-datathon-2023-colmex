@@ -19,6 +19,8 @@ reviews_sample["counter"] = list(reviews_sample.index)
 reviews_merged = reviews_sample.merge(metadata_sample, how="left", on="asin")
 top_10_brands = list(reviews_merged.groupby("brand").size().sort_values(ascending=False).head(10).index)
 
+
+
 reviews_merged = reviews_merged[reviews_merged["brand"].isin(top_10_brands)]
 
 # reviews_sample = reviews_sample.head(10)
@@ -59,6 +61,13 @@ expected_columns = ["reviewID",
 reviews_merged = reviews_merged[expected_columns]
 
 reviews_merged.to_parquet("sample/data_music_labeled.parquet")
+reviews_merged.columns
+
+data_sample = pq.read_table('sample/data_music_labeled.parquet')
+data_sample.to_pandas().columns
+
+sample = pq.read_table('sample/ready_to_upload/streamdata_music_labeled.parquet')
+sample.to_pandas().columns
 
 
 ##### Create Metadata table
@@ -84,10 +93,12 @@ stream_sample = pq.read_table('sample/stream_data_music_43424.parquet')
 stream_sample = stream_sample.to_pandas()
 
 stream_sample = stream_sample[stream_sample["asin"].isin(lines)]
-
+stream_sample
 industry_asins = lines
 
 streaming_data = stream_sample.copy()
 
 stream_sample[expected_columns]
 
+
+data.to_parquet("sample/streamdata_music_labeled.parquet")

@@ -22,7 +22,7 @@ def run_model(data):
     data["emotion"] = emotion
     return data
 
-
+# 4311954456
 def execute_pipeline():
     #Extractiong data
     print("Extract data")
@@ -33,8 +33,13 @@ def execute_pipeline():
     data = data_filter.convert_strlist_to_dataframe(streaming_data)
     
     industry_asins = data_filter.load_asins("jsons/asins_music_instruments.txt")
+    industry_brands = data_filter.load_asins("jsons/brands_music_instruments.txt")
+    selected_brands = data_filter.load_asins("jsons/brands.txt")
+
     data, __ = data_filter.filter_data(industry_asins, [data])
-    data = data_filter.join_filter(data)
+    data = data_filter.filter_brands(selected_brands, industry_brands, industry_asins, data[0])
+    
+    data = data_filter.join_filter([data])
     data = data_filter.select_columns(data)
     
     ## Run model
