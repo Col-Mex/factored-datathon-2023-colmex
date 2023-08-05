@@ -35,4 +35,6 @@ def get_top_10_brands():
     return df['brand'].to_list()
 
 brands = get_top_10_brands()
-st.write(brands)
+
+brand1 = st.selectbox("Select first brand", options=brands)
+brand2 = st.selectbox("Select second brand", options=brands, index=1)
