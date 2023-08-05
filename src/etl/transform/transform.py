@@ -41,6 +41,7 @@ class model():
         
         sentiment = self.__safe_sentiment_task(text)
         emotion = self.__safe_emotion_task(text)
+        print(len(text))
         
         # sentiment = data.apply(self.__safe_sentiment_task, axis=1)
         # emotion = data.apply(self.__safe_emotion_task, axis=1)

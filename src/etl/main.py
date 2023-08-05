@@ -15,7 +15,7 @@ sentimenter.load_model()
 
 def run_model(data):
     reviews_and_summary = data[["reviewText", "summary"]].values.tolist()
-    pool_obj = multiprocessing.Pool(processes=10)
+    pool_obj = multiprocessing.Pool()
     table = pool_obj.map(sentimenter.apply_model_to_data, reviews_and_summary)
     pool_obj.close()
     sentiment = [i[0][0]for i in table]
