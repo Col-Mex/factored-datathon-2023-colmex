@@ -337,6 +337,9 @@ class data_filtering():
         # Replace nulls by 0s
         data.loc[data['vote'].isnull(), 'vote'] = '0'
         data['vote'] = data['vote'].str.replace(',', '').astype(int)
+        # string verified to boolean
+        data.loc[data['verified'] == 'true', 'verified'] = True
+        data.loc[data['verified'] == 'false', 'verified'] = False
         # Remove unnecessary columns
         data.drop(['image', 'style'], axis=1, inplace=True)
 
