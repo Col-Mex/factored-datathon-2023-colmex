@@ -32,6 +32,55 @@ from transformers import pipeline
 # 4. export
 
 
+
+class model():
+    def __init__(self) -> None:
+        pass
+    
+    def apply_model_to_data(self, text):
+        
+        sentiment = self.__safe_sentiment_task(text)
+        emotion = self.__safe_emotion_task(text)
+        
+        # sentiment = data.apply(self.__safe_sentiment_task, axis=1)
+        # emotion = data.apply(self.__safe_emotion_task, axis=1)
+        
+        return sentiment, emotion
+
+    def load_model(self):
+        # Load ML models for sentiment and emotion recognition on base of text
+        model_sentiment = "cardiffnlp/twitter-roberta-base-sentiment-latest"
+        self.sentiment_task = pipeline("sentiment-analysis", model=model_sentiment, tokenizer=model_sentiment)
+        self.model_sentiment = model_sentiment
+
+        model_emotion = "j-hartmann/emotion-english-distilroberta-base"
+        self.emotion_task = pipeline("text-classification", model=model_emotion, return_all_scores=False)
+        self.model_emotion = model_emotion
+   
+    def __safe_sentiment_task(self, text):
+        try:
+            result = tuple(self.sentiment_task(text[0])[0].values())
+            return result
+        except:
+            try:
+                result = tuple(self.sentiment_task(text[1], **{"truncation": True, "max_length": 512})[0].values())
+                return result
+            except:
+                return tuple(['neutral', 0])
+            
+    def __safe_emotion_task(self, text):
+        try:
+            result = tuple(self.emotion_task(text[0])[0].values())
+            return result
+        except:
+            try:
+                result = tuple(self.emotion_task(text[1], **{"truncation": True, "max_length": 512})[0].values())
+                return result
+            except:
+                return tuple(['neutral', 0])
+
+
+
 class data_sampling_from_local():
     def __init__(self) -> None:
         pass
@@ -128,8 +177,15 @@ class data_filtering():
         return filtered_asins
 
     def load_asins(self, path):
-        with open(path) as f:
-            asins = json.load(f)
+        
+        try:
+            with open(path) as f:
+                asins = json.load(f)
+        except:
+            with open(path, 'r') as f:
+                asins = f.readlines() 
+            
+            asins = [l.strip() for l in asins]           
         
         return asins
     
