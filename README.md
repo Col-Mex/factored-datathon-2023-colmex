@@ -29,7 +29,6 @@ The repository is structured as follows:
     3. ColMex_Team_DA_Process_2023_Datathon_Stream_decision
     4. ColMex_Team_DA_Process_2023_Datathon_Part_III
 
-![](images/streaming_data_eda.png)
 
 * src:
     1. etl: Contains modules for ETL functions, including extraction from batch and streaming data, transformation functions to apply database standards, and loading data to the database. NOTE: THIS FILES CONTAIN ALL FUNCTIONS AND PIPELINE TO EXECUTE THE SOLUTION AUTO
@@ -81,10 +80,10 @@ Follow the instructions in each subdirectory to run the specific components of t
 
 ## Contributors
 
-José Niño
-Eduardo Avelar
-Rodrigo Quezada
-Andrés Rocha
+* José Niño
+* Eduardo Avelar
+* Rodrigo Quezada
+* Andrés Rocha
 
 From ColMex Team
 
@@ -112,6 +111,11 @@ This paper introduces the [Amazon Review Data (2018)](https://nijianmo.github.io
 * [amazon_metadata_raw_schema.json](data_files/amazon_metadata_raw_schema.json)
 
 [3_explore_batch_data](notebooks/3_explore_batch_data.ipynb) - Query data for EDA.
+
+
+**Number of reviews**
+![](images/streaming_data_eda.png)
+
 
 **Batch Data source exploration**
 
