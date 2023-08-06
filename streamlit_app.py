@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
 
+st.set_page_config(
+    page_title="Brand Health Tracker",
+    page_icon="🎵",
+)
+
 st.title('Brand Health Tracker')
 st.subheader('Musical Instruments')
 
