@@ -110,3 +110,4 @@ with tab2:
                                  period=period, length=length,
                                  indicator=indicator, scale=scale)
     st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
+    
