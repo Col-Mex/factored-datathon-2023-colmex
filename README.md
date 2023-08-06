@@ -71,11 +71,11 @@ Follow the instructions in each subdirectory to run the specific components of t
 
 ## Usage
 
-* Data Extraction: Load the functions from src/etl/extract folder on extract.py or extract_stream.py (from batch or stream data) (https://github.com/Col-Mex/factored-datathon-2023-colmex/blob/main/src/etl/extract/main.py contains the pipeline of extraction batch data)
-* Data Transformation: Load the functions from src/etl/transform folder on transform.py (https://github.com/Col-Mex/factored-datathon-2023-colmex/blob/main/src/etl/transform/main.py contains the pipeline of transform batch data)
+* Data Extraction: Load the functions from src/etl/extract folder on extract.py or extract_stream.py (from batch or stream data) ([main.py](src/etl/extract/main.py) contains the pipeline of extraction batch data)
+* Data Transformation: Load the functions from src/etl/transform folder on transform.py ([main.py](src/etl/transform/main.py) contains the pipeline of extraction batch data) contains the pipeline of transform batch data)
 * Data Loading: Load the functions from src/etl/load folder on load.py to load the transformed data into an Azure Databricks database.
 * Data Analysis: Explore the notebooks in the notebook directory for data analysis, model setup tests, database connection tests, and data processing tests.
-* ETL Automation: Execute the main.py script in the src/etl directory to run the ETL pipeline automatically (https://github.com/Col-Mex/factored-datathon-2023-colmex/blob/main/src/etl/main.py) - This pipeline is the main pipeline to Extract/Transform/Load the streaming data.
+* ETL Automation: Execute the main.py script in the src/etl directory to run the ETL pipeline automatically [main.py](src/etl/main.py) contains the pipeline of extraction batch data) - This pipeline is the main pipeline to Extract/Transform/Load the streaming data.
 * Application: Use the files in the application directory to connect to the database and display the results in the dashboard.
 
 
