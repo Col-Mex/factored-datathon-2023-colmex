@@ -67,6 +67,9 @@ The repository is structured as follows:
 * application: Contains files for connecting to the database and displaying the results in the dashboard. You can find the dashboard in https://factored-datathon-2023-colmex.streamlit.app)
 
 
+View of the application:        
+![](images/dashboard1.png)
+
 
 
 ## Setup and Installation
