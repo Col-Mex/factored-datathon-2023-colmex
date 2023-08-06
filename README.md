@@ -57,7 +57,7 @@ The repository is structured as follows:
 
 * src:
     1. etl: Contains modules for ETL functions, including extraction from batch and streaming data, transformation functions to apply database standards, and loading data to the database. 
-    
+
         *NOTE: THIS FILES CONTAIN ALL FUNCTIONS AND PIPELINE TO EXECUTE THE SOLUTION AUTO*
 
     2. main.py: Main script to execute the ETL pipeline automatically.
@@ -130,6 +130,15 @@ From ColMex Team
 This project is licensed under the MIT License.
 
 Feel free to modify and adapt the project according to your needs. If you have any questions or suggestions, please feel free to contact us.
+
+
+
+
+
+
+
+
+
 
 **Research notes**
 
