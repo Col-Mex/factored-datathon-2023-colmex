@@ -49,19 +49,19 @@ The repository is structured as follows:
     **ETL execution program:**
     We use a DataBricks IaaS solution creating a cluster virtual machine to execute the ETL programmatically. This solution execute the prompt "python src/etl/main.py" one time per day and automatically extract/transform/load the data. All the data are managed in RAM and is not stored in intermediate step.
 
-    Group of resources:
+    Group of resources: \n
     ![](images/server1.png)
 
-    ETL execution:
+    ETL execution: \n
     ![](images/server2.png)
     
-    ETL job:
+    ETL job: \n
     ![](images/server3.png)
     
-    ETL schedule:
+    ETL schedule: \n
     ![](images/server4.png)
     
-    Job Details:
+    Job Details: \n
     ![](images/server5.png)
 
 * application: Contains files for connecting to the database and displaying the results in the dashboard. You can find the dashboard in https://factored-datathon-2023-colmex.streamlit.app)
