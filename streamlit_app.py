@@ -37,9 +37,33 @@ def get_top_10_brands():
         ORDER BY review_count DESC;
     """, conn)
 
-    return df['brand'].to_list()
+    return df
 
-brands = get_top_10_brands()
+def get_top_10_brands_last_30_days():
+    df = pd.read_sql("""
+        SELECT TOP 10 m.brand, COUNT(r.asin) AS review_count
+        FROM metadata m
+        INNER JOIN reviews r ON m.asin = r.asin
+        WHERE r.dateReview >= DATEADD(day, -30, GETDATE())
+        GROUP BY m.brand
+        ORDER BY review_count DESC;
+    """, conn)
 
-brand1 = st.selectbox("Select first brand", options=brands)
-brand2 = st.selectbox("Select second brand", options=brands, index=1)
+    return df
+
+# df_brands = get_top_10_brands()
+# brands = df_brands['brand'].to_list()
+
+# brand1 = st.selectbox("Select first brand", options=brands)
+# brand2 = st.selectbox("Select second brand", options=brands, index=1)
+
+df_30days = get_top_10_brands_last_30_days()
+
+st.dataframe(
+    df_30days,
+    column_config={
+        "brand": "Brand", 
+        "review_count": "Last reviews (30 days)"
+    },
+    hide_index=True,
+)
