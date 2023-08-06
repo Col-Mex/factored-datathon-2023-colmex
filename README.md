@@ -31,7 +31,9 @@ The repository is structured as follows:
 
 
 * src:
-    1. etl: Contains modules for ETL functions, including extraction from batch and streaming data, transformation functions to apply database standards, and loading data to the database. NOTE: THIS FILES CONTAIN ALL FUNCTIONS AND PIPELINE TO EXECUTE THE SOLUTION AUTO
+    1. etl: Contains modules for ETL functions, including extraction from batch and streaming data, transformation functions to apply database standards, and loading data to the database. 
+        *NOTE: THIS FILES CONTAIN ALL FUNCTIONS AND PIPELINE TO EXECUTE THE SOLUTION AUTO*
+
     2. main.py: Main script to execute the ETL pipeline automatically.
 * Cloud solution:
     The solution is completly a cloud integrated solution.
