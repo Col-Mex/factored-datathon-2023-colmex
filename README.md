@@ -37,11 +37,17 @@ The repository is structured as follows:
 * Cloud solution:
     The solution is completly a cloud integrated solution.
 
-    **System Architecture proposal**
+    **System Architecture**
+    This solution execute it one time per day and extract all the streaming data available since the last record extracted in the data base until the last record available 
+
+    NOTE: This solution shows the results for the last stream data available and updated one time per day.
+
     ![](images/Brand_Health_solution.png)
     
 
     **ETL execution program:**
+    We use a DataBricks IaaS solution creating a cluster virtual machine to execute the ETL programmatically. This solution execute the prompt "python src/etl/main.py" one time per day and automatically extract/transform/load the data. All the data are managed in RAM and is not stored in intermediate step.
+
     ![](images/server1.png)
     ![](images/server2.png)
     ![](images/server3.png)
