@@ -39,6 +39,7 @@ def get_top_10_brands():
 
     return df
 
+@st.cache_data
 def get_top_10_brands_last_30_days():
     df = pd.read_sql("""
         SELECT TOP 10 m.brand, COUNT(r.asin) AS review_count
