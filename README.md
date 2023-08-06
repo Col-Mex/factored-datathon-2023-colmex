@@ -3,7 +3,7 @@
 This project was developed as part of a Factored-Datathon, focusing on sentiment analysis of Amazon reviews. The goal was to create an end-to-end solution, including a sentiment analysis NLP model, a complete ETL process for both batch and streaming data, transformation, and loading of data into an Azure Databricks database, and a dashboard deployed using Streamlit.
 
 This project was powered by ColMex Team
-(images/colmexlogo.png)
+![](images/colmexlogo.png)
 
 ## Project Structure
 
@@ -28,16 +28,20 @@ The repository is structured as follows:
     2. ColMex_Team_DA_Process_2023_Datathon_Part_II
     3. ColMex_Team_DA_Process_2023_Datathon_Stream_decision
     4. ColMex_Team_DA_Process_2023_Datathon_Part_III
+
+![](images/streaming_data_eda.png)
+
 * src:
     1. etl: Contains modules for ETL functions, including extraction from batch and streaming data, transformation functions to apply database standards, and loading data to the database. NOTE: THIS FILES CONTAIN ALL FUNCTIONS AND PIPELINE TO EXECUTE THE SOLUTION AUTO
     2. main.py: Main script to execute the ETL pipeline automatically.
 * Cloud solution:
     The solution is completly a cloud integrated solution.
 
-    End-to-End solution diagram:
-    ![](images/streaming_data_eda.png)
+    **System Architecture proposal**
+    ![](images/Brand_Health_solution.png)
+    
 
-    ETL execution program:
+    **ETL execution program:**
     ![](images/server1.png)
     ![](images/server2.png)
     ![](images/server3.png)
@@ -141,8 +145,7 @@ Number of reviews without product metadata: 722,556
 
 
 
-**System Architecture proposal**
-![](images/Brand_Health_solution.png)
+
 
 
 **Data Preprocessing notes**
